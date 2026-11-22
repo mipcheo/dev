@@ -1,0 +1,7 @@
+{
+  "name": "@mipcheo/tsconfig",
+  "private": true,
+  "exports": {
+    "./*.json": "./src/*.json"
+  }
+}

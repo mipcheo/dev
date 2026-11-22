@@ -1,0 +1,67 @@
+# The packages of the workspace: every hook, tool and script folder is a package of its own
+packages:
+  - packages/*
+
+# pnpm itself: progress printed as plain appended lines, a package's engines field enforced, one flat node_modules at the root
+reporter: append-only
+engineStrict: true
+nodeLinker: hoisted
+
+# Every direct package's version lives here, exact, and each package.json says "catalog:"
+savePrefix: ''
+catalogMode: strict
+cleanupUnusedCatalogs: true
+catalog:
+  '@eslint/js': 10.0.1
+  '@next/eslint-plugin-next': 16.4.6
+  '@oxc-node/cli': 1.0.2
+  '@stylistic/eslint-plugin': 6.0.1
+  '@types/eslint-plugin-jsx-a11y': 6.10.1
+  '@types/node': 26.6.6
+  eslint: 10.15.0
+  eslint-config-prettier: 10.1.8
+  eslint-import-resolver-typescript: 4.4.5
+  eslint-plugin-import-x: 4.18.1
+  eslint-plugin-jsdoc: 65.5.1
+  eslint-plugin-jsx-a11y: 6.10.2
+  eslint-plugin-mdx: 3.10.1
+  eslint-plugin-perfectionist: 5.14.0
+  eslint-plugin-prettier: 5.5.7
+  eslint-plugin-react: 7.37.5
+  eslint-plugin-react-hooks: 7.1.1
+  eslint-plugin-react-refresh: 0.5.8
+  eslint-plugin-sonarjs: 4.2.2
+  eslint-plugin-storybook: 10.6.8
+  eslint-plugin-unicorn: 80.0.0
+  eslint-plugin-unused-imports: 4.4.1
+  globals: 17.14.0
+  prettier: 3.10.1
+  prettier-plugin-jsdoc: 1.8.1
+  prettier-plugin-markdown-compact-tables: 1.0.0
+  prettier-plugin-multiline-arrays: 4.1.11
+  prettier-plugin-tailwindcss: 0.8.1
+  typescript: 'npm:@typescript/typescript6@6.0.2'
+  typescript-eslint: 8.73.0
+  vitest: 5.1.1
+
+catalogs:
+  overrides:
+    glob: '14.0.6'
+
+overrides:
+  eslint: 'catalog:'
+  glob: 'catalog:overrides'
+
+# An unmet peer dependency fails the install, except on eslint and typescript, where whether versions work together is judged by the build and the tests
+strictPeerDependencies: true
+peerDependencyRules:
+  allowAny:
+    - eslint
+    - typescript
+
+# A release younger than one day is refused, with no fall-back to an older version; the versions the author
+# took before their day had passed are listed here
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
+minimumReleaseAgeExclude:
+  - eslint-plugin-jsdoc@65.5.1

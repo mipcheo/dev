@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    // Project
+    "incremental": true,
+
+    // Language and Environment
+    "types": ["node", "vite/client"],
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable",
+      "DOM.AsyncIterable",
+      "WebWorker",
+      "WebWorker.AsyncIterable",
+      "WebWorker.ImportScripts",
+      "Webworker.Iterable"
+    ],
+    "jsx": "preserve"
+  }
+}

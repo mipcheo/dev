@@ -1,0 +1,7 @@
+{
+  "extends": "@mipcheo/tsconfig/base.json",
+  "compilerOptions": {
+    "rootDir": "."
+  },
+  "include": ["./src/**/*"]
+}

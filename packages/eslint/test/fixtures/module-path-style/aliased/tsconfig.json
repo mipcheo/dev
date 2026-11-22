@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@scope/app/*": ["./src/*"],
+      "@config/*": ["./src/config/*"]
+    }
+  },
+  "include": ["./src/**/*", "./test/**/*"]
+}
