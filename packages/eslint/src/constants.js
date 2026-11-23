@@ -1,5 +1,3 @@
-import path from 'node:path';
-
 /** The glob pattern for JavaScript files. */
 export const JS_FILE_PATTERN = '**/*.{js,mjs,jsx}';
 
@@ -20,6 +18,4 @@ export const STORYBOOK_JS_FILE_PATTERN = `.storybook/${JS_FILE_PATTERN}`;
 
 /** The glob pattern for Storybook's own TypeScript files. */
 export const STORYBOOK_TS_FILE_PATTERN = `.storybook/${TS_FILE_PATTERN}`;
-
-/** The root directory of the workspace. */
-export const WORKSPACE_ROOT_DIR = path.resolve(import.meta.dirname, '../../../../');
+\

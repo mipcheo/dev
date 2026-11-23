@@ -9,7 +9,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-import { JS_FILE_PATTERN, TS_FILE_PATTERN, WORKSPACE_ROOT_DIR } from '../constants.js';
+import { JS_FILE_PATTERN, TS_FILE_PATTERN } from '../constants.js';
 import projectPlugin from '../plugin.js';
 
 /**
@@ -24,7 +24,8 @@ import projectPlugin from '../plugin.js';
  *
  * @typedef {{
  *   globals?: (keyof typeof globals)[];
- *   projectDir: string;
+ *   rootDir: string;
+ *   projectDir?: string;
  *   sourceType: 'module' | 'commonjs';
  *   ignores?: string[];
  *   restrictedImports?: RestrictedImport[];
@@ -38,7 +39,7 @@ import projectPlugin from '../plugin.js';
  *
  * @returns {Linter.Config[]} Base ESLint configuration.
  */
-export function base({ globals: globalNames = [], projectDir, sourceType, ignores = [], restrictedImports = [] }) {
+export function base({ globals: globalNames = [], rootDir, projectDir = rootDir, sourceType, ignores = [], restrictedImports = [] }) {
   /** @type {Record<string, boolean>} */
   const languageGlobals = {};
   for (const globalName of globalNames) {
@@ -407,7 +408,7 @@ export function base({ globals: globalNames = [], projectDir, sourceType, ignore
         'import-x/no-extraneous-dependencies': [
           'error',
           {
-            packageDir: [WORKSPACE_ROOT_DIR, projectDir],
+            packageDir: [rootDir, projectDir],
             devDependencies: true,
             optionalDependencies: false,
             peerDependencies: false,
