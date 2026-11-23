@@ -30,7 +30,7 @@
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "PascalReitermann93.vscode-yaml-sort"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "better-comments.highlightPlainText": true,
   "better-comments.multilineComments": true,

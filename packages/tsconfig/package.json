@@ -1,5 +1,6 @@
 {
   "name": "@mipcheo/tsconfig",
+  "version": "1.0.0",
   "type": "module",
   "exports": {
     "./*.json": "./src/*.json"
