@@ -1,2 +1,5 @@
-# installed packages (pnpm-lock.yaml holds their versions)
+# installed packages
 node_modules/
+
+# output packages
+out/
