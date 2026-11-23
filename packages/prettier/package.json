@@ -1,19 +1,22 @@
 {
   "name": "@mipcheo/prettier",
-  "private": true,
   "type": "module",
   "exports": {
     ".": "./src/index.js",
     "./*": "./src/configs/*.js"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "typecheck": "tsc --noEmit"
+    "test": "vitest run",
+    "check": "tsc --noEmit && eslint . --max-warnings 0"
   },
   "dependencies": {
+    "prettier": "catalog:",
     "prettier-plugin-jsdoc": "catalog:",
     "prettier-plugin-markdown-compact-tables": "catalog:",
     "prettier-plugin-multiline-arrays": "catalog:",
     "prettier-plugin-tailwindcss": "catalog:"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
   }
 }

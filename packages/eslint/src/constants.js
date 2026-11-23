@@ -18,4 +18,3 @@ export const STORYBOOK_JS_FILE_PATTERN = `.storybook/${JS_FILE_PATTERN}`;
 
 /** The glob pattern for Storybook's own TypeScript files. */
 export const STORYBOOK_TS_FILE_PATTERN = `.storybook/${TS_FILE_PATTERN}`;
-\

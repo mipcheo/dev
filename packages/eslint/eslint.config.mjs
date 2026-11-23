@@ -1,6 +1,6 @@
 import path from 'node:path';
-import { defineConfig } from 'eslint/config';
 
+import { defineConfig } from '@mipcheo/eslint';
 import { base } from '@mipcheo/eslint/base';
 import { jsdoc } from '@mipcheo/eslint/jsdoc';
 import { prettier } from '@mipcheo/eslint/prettier';

@@ -1,7 +1,16 @@
 {
   "name": "@mipcheo/tsconfig",
-  "private": true,
+  "type": "module",
   "exports": {
     "./*.json": "./src/*.json"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@oxc-node/cli": "catalog:",
+    "typescript": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "vitest": "catalog:"
   }
 }

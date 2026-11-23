@@ -1,19 +1,19 @@
 {
   "name": "@mipcheo/eslint",
-  "private": true,
   "type": "module",
   "exports": {
+    ".": "./src/index.js",
     "./*": "./src/configs/*.js"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "check": "tsc --noEmit && eslint . --max-warnings 0"
   },
   "dependencies": {
     "@eslint/js": "catalog:",
     "@next/eslint-plugin-next": "catalog:",
     "@stylistic/eslint-plugin": "catalog:",
+    "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-import-resolver-typescript": "catalog:",
     "eslint-plugin-import-x": "catalog:",
@@ -33,6 +33,7 @@
     "typescript-eslint": "catalog:"
   },
   "devDependencies": {
-    "@types/eslint-plugin-jsx-a11y": "catalog:"
+    "@types/eslint-plugin-jsx-a11y": "catalog:",
+    "vitest": "catalog:"
   }
 }

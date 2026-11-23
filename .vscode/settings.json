@@ -291,6 +291,16 @@
   },
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.pnpm-store/**": true,
+    "**/node_modules": true,
+    "*/.git/objects/**": true,
+    "*/.git/subtree-cache/**": true,
+    "*/.hg/store/**": true,
+    ".git/objects/**": true,
+    ".git/subtree-cache/**": true,
+    ".hg/store/**": true
+  },
   "formatFiles.excludePattern": "dist/**/*,build/**/*,out/**/*,node_modules/**/*,pnpm-lock.yaml,.next/**/*,.cache/**/*,logs/**/*,*.log,next-env.d.ts,.claude/**/*,**/dist/**/*,**/build/**/*,**/out/**/*,**/node_modules/**/*,**/pnpm-lock.yaml,**/.next/**/*,**/.cache/**/*,**/logs/**/*,**/*.log,**/next-env.d.ts,**/.claude/**/*",
   "formatFiles.useGitIgnore": true,
   "git-graph.commitDetailsView.location": "Docked to Bottom",

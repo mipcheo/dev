@@ -1,6 +1,5 @@
 /** @import {Linter} from 'eslint' */
 
-// @ts-expect-error https://github.com/eslint-stylistic/eslint-stylistic/issues/1331
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import { defineConfig } from 'eslint/config';
