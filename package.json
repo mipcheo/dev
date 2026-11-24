@@ -7,7 +7,8 @@
     "format": "prettier --write .",
     "check": "prettier --check . && pnpm --recursive --if-present run check",
     "test": "pnpm --recursive --if-present run test",
-    "pack": "pnpm --recursive pack --pack-destination out"
+    "pack": "pnpm --recursive pack --pack-destination out",
+    "publish": "pnpm --recursive publish"
   },
   "devDependencies": {
     "@mipcheo/eslint": "workspace:*",

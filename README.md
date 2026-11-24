@@ -22,6 +22,7 @@ pnpm install
 | `pnpm check` | Check formatting, types and lint. |
 | `pnpm test` | Run the tests. |
 | `pnpm pack` | Pack every package into `out/`. |
+| `pnpm publish` | Publish every package to registry. |
 
 ## Versions
 
