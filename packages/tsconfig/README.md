@@ -23,6 +23,21 @@ pnpm add -D typescript@npm:@typescript/typescript6 @typescript/native@npm:typesc
 }
 ```
 
+## Running TypeScript directly
+
+`base.json` emits nothing, so use `oxnode` from `@oxc-node/cli` to run `.ts` files without building:
+
+```sh
+pnpm add -D @oxc-node/cli
+```
+
+```sh
+pnpm oxnode ./src/index.ts
+pnpm oxnode watch ./src/index.ts
+```
+
+`watch` reruns when a file changes. `oxnode` reads your `tsconfig.json`, so `paths` aliases, `.ts` imports and decorators work. It does not check types: run `tsc` for that.
+
 ## Configs
 
 | File | Extends | For |
