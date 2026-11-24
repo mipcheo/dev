@@ -10,25 +10,6 @@
 import * as jsdocPlugin from 'prettier-plugin-jsdoc';
 import * as multilineArrayPlugin from 'prettier-plugin-multiline-arrays';
 
-/**
- * JSDoc options.
- *
- * @type {JSDocOptions}
- */
-export const jsdocOptions = {
-  tsdoc: true,
-  jsdocDescriptionWithDot: true,
-  jsdocSeparateReturnsFromParam: true,
-  jsdocPreferCodeFences: true,
-  jsdocSeparateTagGroups: true,
-};
-
-/** @type {MultilineArrayOptions} */
-const multilineArrayOptions = {
-  multilineArraysWrapThreshold: 3,
-  multilineArraysLinePattern: '',
-};
-
 /** @type {Plugin} */
 const jsdocWithMultilineArrayPlugin = {
   ...multilineArrayPlugin,
@@ -70,6 +51,21 @@ const jsdocWithMultilineArrayPlugin = {
  * @returns {PrettierConfig} JSDoc Prettier configuration.
  */
 export function jsdoc() {
+  /** @type {JSDocOptions} */
+  const jsdocOptions = {
+    tsdoc: true,
+    jsdocDescriptionWithDot: true,
+    jsdocSeparateReturnsFromParam: true,
+    jsdocPreferCodeFences: true,
+    jsdocSeparateTagGroups: true,
+  };
+
+  /** @type {MultilineArrayOptions} */
+  const multilineArrayOptions = {
+    multilineArraysWrapThreshold: 3,
+    multilineArraysLinePattern: '',
+  };
+
   return {
     plugins: [jsdocWithMultilineArrayPlugin],
 

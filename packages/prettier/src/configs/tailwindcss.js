@@ -10,33 +10,24 @@
  */
 
 /**
- * Tailwindcss options.
- *
- * @param {Options} options The options for the Tailwindcss Prettier configuration.
- *
- * @returns {TailwindcssOptions} Tailwindcss options.
- */
-export function tailwindcssOptions({ stylesheetPath }) {
-  return {
-    tailwindStylesheet: stylesheetPath,
-    tailwindPreserveWhitespace: false,
-    tailwindPreserveDuplicates: false,
-    tailwindAttributes: ['className', '/.+ClassName/'],
-    tailwindFunctions: ['cn', 'cva', 'tw'],
-  };
-}
-
-/**
  * Tailwindcss Prettier configuration.
  *
  * @param {Options} options The options for the Tailwindcss Prettier configuration.
  *
  * @returns {PrettierConfig} Tailwindcss Prettier configuration.
  */
-export function tailwindcss(options) {
+export function tailwindcss({ stylesheetPath }) {
+  /** @type {TailwindcssOptions} */
+  const tailwindcssOptions = {
+    tailwindStylesheet: stylesheetPath,
+    tailwindPreserveWhitespace: false,
+    tailwindPreserveDuplicates: false,
+    tailwindAttributes: ['className', '/.+ClassName/'],
+    tailwindFunctions: ['cn', 'cva', 'tw'],
+  };
+
   return {
     plugins: ['prettier-plugin-tailwindcss'],
-
-    ...tailwindcssOptions(options),
+    ...tailwindcssOptions,
   };
 }

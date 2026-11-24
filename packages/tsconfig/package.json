@@ -5,7 +5,9 @@
   "exports": {
     "./*.json": "./src/*.json"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "vitest run"
+  },
   "dependencies": {
     "@oxc-node/cli": "catalog:",
     "typescript": "catalog:"
