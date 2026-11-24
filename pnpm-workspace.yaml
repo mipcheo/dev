@@ -18,6 +18,7 @@ catalog:
   '@stylistic/eslint-plugin': 6.0.1
   '@types/eslint-plugin-jsx-a11y': 6.10.1
   '@types/node': 26.6.6
+  '@typescript/native': 'npm:typescript@7.0.2'
   eslint: 10.15.0
   eslint-config-prettier: 10.1.8
   eslint-import-resolver-typescript: 4.4.5
@@ -45,17 +46,21 @@ catalog:
   vitest: 5.1.1
 
 catalogs:
-  overrides:
-    glob: '14.0.6'
+  # The ranges a published package asks its consumer for, each package.json saying "catalog:peers"; a peer is also a dev dependency at the exact version above
+  peers:
+    eslint: ^10.15
+    prettier: ^3.5
+    typescript: ^6.0.0 || ^7.0.0
 
 overrides:
-  eslint: 'catalog:'
-  glob: 'catalog:overrides'
+  eslint: ^10.15.0
+  glob: ^14.0.6
 
 # An unmet peer dependency fails the install, except on eslint and typescript, where whether versions work together is judged by the build and the tests
 strictPeerDependencies: true
 peerDependencyRules:
   allowAny:
+    - '@typescript/native'
     - eslint
     - typescript
 

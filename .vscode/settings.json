@@ -512,7 +512,13 @@
   },
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.commandPalette.experimental.suggestCommands": true,
+  "workbench.diffEditorAssociations": {
+    "*.md": "default"
+  },
   "workbench.editor.useModal": "off",
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  },
   "workbench.experimental.modernUI": true,
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.list.smoothScrolling": true,

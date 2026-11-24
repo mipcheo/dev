@@ -1,94 +1,85 @@
 # @mipcheo/tsconfig
 
-Shared base `tsconfig` files for projects to extend: five of them, one per kind of project.
+Shared `tsconfig` files to extend.
 
 ## Installation
 
-```powershell
-pnpm add -D @mipcheo/tsconfig
+```sh
+pnpm add -D @mipcheo/tsconfig typescript @types/node
 ```
 
-The package brings `typescript`.
+`typescript` can be TypeScript 6 or 7. With `@mipcheo/eslint`, install TypeScript 6 as `typescript` and TypeScript 7 as `@typescript/native` (for a fast `tsc`):
+
+```sh
+pnpm add -D typescript@npm:@typescript/typescript6 @typescript/native@npm:typescript
+```
 
 ## Usage
 
 ```json
 {
   "extends": "@mipcheo/tsconfig/base.json",
-  "compilerOptions": {
-    "rootDir": "."
-  },
   "include": ["./src/**/*"]
 }
 ```
 
-None of the files sets `include`, `rootDir` or `paths`: those belong to the project.
+## Configs
 
-## Configurations
-
-| Import | Extends | For |
+| File | Extends | For |
 | --- | --- | --- |
-| [`@mipcheo/tsconfig/base.json`](#basejson) | — | Libraries, Node.js scripts and tools. |
-| [`@mipcheo/tsconfig/typescript.json`](#typescriptjson) | `base.json` | TypeScript projects that run in the browser, built with Vite. |
-| [`@mipcheo/tsconfig/react.json`](#reactjson) | `base.json` | React apps and libraries, built with Vite. |
-| [`@mipcheo/tsconfig/nextjs.json`](#nextjsjson) | `react.json` | Next.js apps. |
-| [`@mipcheo/tsconfig/nestjs.json`](#nestjsjson) | `base.json` | NestJS apps, built with Vite. |
+| [`base.json`](#basejson) | — | Libraries and Node.js scripts. |
+| [`typescript.json`](#typescriptjson) | `base.json` | Browser projects built with Vite. |
+| [`react.json`](#reactjson) | `base.json` | React apps built with Vite. |
+| [`nextjs.json`](#nextjsjson) | `react.json` | Next.js apps. |
+| [`nestjs.json`](#nestjsjson) | `base.json` | NestJS apps built with Vite. |
 
-```text
-base.json
-├── typescript.json
-├── react.json
-│   └── nextjs.json
-└── nestjs.json
-```
+All except `base.json` load the `vite/client` types, so the project needs `vite`.
 
 ### `base.json`
 
-Strict type checking of modern TypeScript and JavaScript, with no output: a bundler or a runner (such as `@oxc-node/cli`) runs the code, and `tsc` only checks it.
+Strict checking, no output: `tsc` only checks, a bundler runs the code.
 
-**Extends**: nothing.
-
-#### Project and language
+#### Language
 
 | Option | Value | Effect |
 | --- | --- | --- |
 | `incremental` | `false` | No `.tsbuildinfo` file. |
-| `target` | `"esnext"` | Modern syntax is kept as written. |
+| `target` | `"esnext"` | Keep modern syntax. |
 | `module` | `"esnext"` | ES modules. |
-| `moduleResolution` | `"bundler"` | Modules resolve as Vite and other bundlers resolve them: no extension needed, `exports` and `imports` of `package.json` honoured. |
-| `lib` | `["ESNext"]` | Only the standard library; no DOM types. |
-| `types` | `["node"]` | Only the Node.js global types are loaded. |
-| `moduleDetection` | `"force"` | Every file is a module, even without `import` or `export`. |
-| `allowJs` | `true` | JavaScript files are part of the program. |
-| `allowArbitraryExtensions` | `true` | A file such as `.css` can be imported when a `.d.css.ts` declares it. |
-| `allowImportingTsExtensions` | `true` | Imports may name `.ts` files. |
-| `rewriteRelativeImportExtensions` | `true` | A relative `.ts` import is written as `.js` in emitted code. |
-| `allowSyntheticDefaultImports`, `esModuleInterop` | `true` | A CommonJS package can be imported as a default import. |
-| `allowUmdGlobalAccess` | `false` | A UMD global must be imported. |
-| `experimentalDecorators`, `emitDecoratorMetadata` | `true` | Legacy decorators with metadata, as NestJS needs. |
-| `forceConsistentCasingInFileNames` | `true` | An import's casing must match the file name. |
-| `isolatedModules` | `true` | Each file can be transpiled alone. |
-| `verbatimModuleSyntax` | `true` | Imports and exports are emitted as written, so a type-only import must say `import type`. |
-| `noResolve` | `false` | Imported files are added to the program. |
-| `resolveJsonModule` | `true` | `.json` files can be imported. |
-| `resolvePackageJsonExports`, `resolvePackageJsonImports` | `true` | The `exports` and `imports` fields of `package.json` are honoured. |
-| `useDefineForClassFields` | `true` | Class fields follow the standard semantics. |
+| `moduleResolution` | `"bundler"` | Resolve imports like Vite. |
+| `lib` | `["ESNext"]` | No DOM types. |
+| `types` | `["node"]` | Node.js types only. |
+| `moduleDetection` | `"force"` | Every file is a module. |
+| `allowJs` | `true` | Include JavaScript files. |
+| `allowArbitraryExtensions` | `true` | Import files like `.css` that have a `.d.css.ts`. |
+| `allowImportingTsExtensions` | `true` | Imports may end in `.ts`. |
+| `rewriteRelativeImportExtensions` | `true` | `.ts` imports become `.js` when emitted. |
+| `allowSyntheticDefaultImports`, `esModuleInterop` | `true` | Default-import CommonJS packages. |
+| `allowUmdGlobalAccess` | `false` | UMD globals must be imported. |
+| `experimentalDecorators`, `emitDecoratorMetadata` | `true` | Decorators, as NestJS uses them. |
+| `forceConsistentCasingInFileNames` | `true` | Import casing must match the file. |
+| `isolatedModules` | `true` | Each file compiles on its own. |
+| `verbatimModuleSyntax` | `true` | Type-only imports need `import type`. |
+| `noResolve` | `false` | Imported files join the program. |
+| `resolveJsonModule` | `true` | Import `.json` files. |
+| `resolvePackageJsonExports`, `resolvePackageJsonImports` | `true` | Honour `exports` and `imports` in `package.json`. |
+| `useDefineForClassFields` | `true` | Standard class fields. |
 
 #### Output
 
 | Option | Value | Effect |
 | --- | --- | --- |
-| `noEmit` | `true` | Type-check only. A project that emits sets `noEmit` to `false`, and `emitDeclarationOnly` to `false` if it emits JavaScript too. |
-| `emitDeclarationOnly` | `true` | When emitting, only `.d.ts` files. |
-| `declaration`, `declarationMap` | `true` | When emitting, `.d.ts` files with maps back to the source. |
-| `sourceMap` | `true` | When emitting JavaScript, source maps. |
-| `inlineSourceMap`, `inlineSources` | `false` | Source maps are separate files. |
-| `importHelpers` | `true` | Helpers are imported from `tslib` rather than inlined. |
-| `noEmitHelpers` | `true` | No helper functions are written into the output. |
-| `noEmitOnError` | `true` | Nothing is emitted when there is a type error. |
-| `preserveConstEnums` | `true` | `const enum` declarations are kept in the output. |
-| `removeComments` | `false` | Comments are kept. |
-| `stripInternal` | `true` | Declarations marked `@internal` are left out of `.d.ts` files. |
+| `noEmit` | `true` | Check only. Set `false` to emit. |
+| `emitDeclarationOnly` | `true` | When emitting, only `.d.ts`. |
+| `declaration`, `declarationMap` | `true` | `.d.ts` files with source maps. |
+| `sourceMap` | `true` | Source maps for JavaScript. |
+| `inlineSourceMap`, `inlineSources` | `false` | Source maps in separate files. |
+| `importHelpers` | `true` | Helpers come from `tslib`. |
+| `noEmitHelpers` | `true` | No helpers written into the output. |
+| `noEmitOnError` | `true` | Emit nothing on a type error. |
+| `preserveConstEnums` | `true` | Keep `const enum`s. |
+| `removeComments` | `false` | Keep comments. |
+| `stripInternal` | `true` | Leave `@internal` out of `.d.ts`. |
 | `emitBOM` | `false` | No byte-order mark. |
 | `newLine` | `"lf"` | `\n` line endings. |
 
@@ -96,80 +87,65 @@ Strict type checking of modern TypeScript and JavaScript, with no output: a bund
 
 | Option | Value | Effect |
 | --- | --- | --- |
-| `strict` | `true` | Every strict check: `strictNullChecks`, `strictFunctionTypes`, `strictBindCallApply`, `strictPropertyInitialization`, `strictBuiltinIteratorReturn`, `noImplicitAny`, `noImplicitThis`, `alwaysStrict` and `useUnknownInCatchVariables`, each also set explicitly. |
-| `checkJs` | `true` | JavaScript files are type-checked, with types from JSDoc. |
-| `noUncheckedIndexedAccess` | `true` | An index access may be `undefined`. |
-| `noPropertyAccessFromIndexSignature` | `true` | A key from an index signature is read as `obj['key']`, not `obj.key`. |
-| `noImplicitOverride` | `true` | A member that overrides one of its base class says `override`. |
-| `noImplicitReturns` | `true` | Every code path of a function that returns a value returns one. |
-| `noFallthroughCasesInSwitch` | `true` | A non-empty `case` ends with `break`, `return` or `throw`. |
-| `noUncheckedSideEffectImports` | `true` | A side-effect import (`import './setup'`) must resolve. |
-| `noUnusedLocals` | `true` | An unused local variable or import is an error. |
-| `noUnusedParameters` | `false` | Unused parameters are left to ESLint, which allows a leading `_`. |
+| `strict` | `true` | Turn on all the strict checks below. |
+| `strictNullChecks` | `true` | `null` and `undefined` must be handled. |
+| `strictFunctionTypes` | `true` | Function parameters are checked strictly. |
+| `strictBindCallApply` | `true` | `bind`, `call` and `apply` are type-checked. |
+| `strictPropertyInitialization` | `true` | Class fields must be set in the constructor. |
+| `strictBuiltinIteratorReturn` | `true` | Built-in iterators return `undefined`, not `any`. |
+| `noImplicitAny` | `true` | No hidden `any` types. |
+| `noImplicitThis` | `true` | `this` must have a known type. |
+| `alwaysStrict` | `true` | Emit `"use strict"`. |
+| `useUnknownInCatchVariables` | `true` | A caught error is `unknown`. |
+| `checkJs` | `true` | Check JavaScript, with types from JSDoc. |
+| `noUncheckedIndexedAccess` | `true` | `array[i]` may be `undefined`. |
+| `noPropertyAccessFromIndexSignature` | `true` | Index-signature keys read as `obj['key']`. |
+| `noImplicitOverride` | `true` | Overrides need `override`. |
+| `noImplicitReturns` | `true` | Every code path returns. |
+| `noFallthroughCasesInSwitch` | `true` | No fall-through between `case`s. |
+| `noUncheckedSideEffectImports` | `true` | `import './setup'` must resolve. |
+| `noUnusedLocals` | `true` | Unused variables are errors. |
+| `noUnusedParameters` | `false` | Left to ESLint. |
 | `allowUnreachableCode` | `false` | Unreachable code is an error. |
-| `allowUnusedLabels` | `false` | An unused label is an error. |
-| `skipLibCheck` | `true` | `.d.ts` files of dependencies are not checked. |
+| `allowUnusedLabels` | `false` | Unused labels are errors. |
+| `skipLibCheck` | `true` | Skip dependencies' `.d.ts`. |
 
 ### `typescript.json`
 
-A TypeScript project that runs in the browser or in a worker, built with Vite.
-
-**Extends**: `base.json`.
-
-| Option | Value | Instead of | Effect |
-| --- | --- | --- | --- |
-| `incremental` | `true` | `false` | Faster rebuilds through a `.tsbuildinfo` file. |
-| `types` | `["node", "vite/client"]` | `["node"]` | Vite's client types: `import.meta.env`, asset imports. |
-| `lib` | `ESNext`, `DOM`, `DOM.Iterable`, `DOM.AsyncIterable`, `WebWorker`, `WebWorker.AsyncIterable`, `WebWorker.ImportScripts`, `Webworker.Iterable` | `["ESNext"]` | Browser and worker APIs. |
-| `jsx` | `"preserve"` | not set | JSX is left for the bundler to transform. |
-
-The project needs `vite` installed, for the `vite/client` types.
+| Option | Value | Effect |
+| --- | --- | --- |
+| `incremental` | `true` | Faster rebuilds. |
+| `types` | `["node", "vite/client"]` | Add Vite types. |
+| `lib` | `ESNext`, `DOM`, `WebWorker` and their iterables | Browser and worker APIs. |
+| `jsx` | `"preserve"` | Leave JSX to the bundler. |
 
 ### `react.json`
 
-A React app or library, built with Vite.
-
-**Extends**: `base.json`.
-
-| Option | Value | Instead of | Effect |
-| --- | --- | --- | --- |
-| `incremental` | `true` | `false` | Faster rebuilds through a `.tsbuildinfo` file. |
-| `types` | `["node", "vite/client"]` | `["node"]` | Vite's client types: `import.meta.env`, asset imports. |
-| `lib` | `ESNext`, `DOM`, `DOM.Iterable`, `DOM.AsyncIterable`, `WebWorker`, `WebWorker.AsyncIterable`, `WebWorker.ImportScripts`, `Webworker.Iterable` | `["ESNext"]` | Browser and worker APIs. |
-| `jsx` | `"preserve"` | not set | JSX is left for Vite's React plugin to transform. |
-
-These are the same options as `typescript.json`. The project needs `vite` installed, for the `vite/client` types.
+| Option | Value | Effect |
+| --- | --- | --- |
+| `incremental` | `true` | Faster rebuilds. |
+| `types` | `["node", "vite/client"]` | Add Vite types. |
+| `lib` | `ESNext`, `DOM`, `WebWorker` and their iterables | Browser and worker APIs. |
+| `jsx` | `"preserve"` | Leave JSX to Vite. |
 
 ### `nextjs.json`
 
-A Next.js app.
+Everything in `react.json`, plus:
 
-**Extends**: `react.json`.
-
-| Option | Value | Instead of | Effect |
-| --- | --- | --- | --- |
-| `plugins` | `[{ "name": "next" }]` | not set | The Next.js TypeScript plugin, for Next.js-specific checks in the editor. |
-| `jsx` | `"react-jsx"` | `"preserve"` | JSX is type-checked against the automatic React runtime. |
-
-It keeps `types: ["node", "vite/client"]` from `react.json`, so the project needs `vite` installed, or overrides `types`.
+| Option | Value | Effect |
+| --- | --- | --- |
+| `plugins` | `[{ "name": "next" }]` | Next.js checks in the editor. |
+| `jsx` | `"react-jsx"` | Automatic React JSX runtime. |
 
 ### `nestjs.json`
 
-A NestJS app, built with Vite.
-
-**Extends**: `base.json`.
-
-| Option | Value | Instead of | Effect |
-| --- | --- | --- | --- |
-| `incremental` | `true` | `false` | Faster rebuilds through a `.tsbuildinfo` file. |
-| `types` | `["node", "vite/client"]` | `["node"]` | Vite's client types: `import.meta.env`, `import.meta.hot`. |
-
-The decorators NestJS needs (`experimentalDecorators`, `emitDecoratorMetadata`) are already on in `base.json`. The project needs `vite` installed, for the `vite/client` types.
+| Option | Value | Effect |
+| --- | --- | --- |
+| `incremental` | `true` | Faster rebuilds. |
+| `types` | `["node", "vite/client"]` | Add Vite types. |
 
 ## Development
 
-```powershell
+```sh
 pnpm test
 ```
-
-The tests in `test/` read each file through the TypeScript API (`readConfigFile` and `parseJsonConfigFileContent`, following `extends`), check that no option is reported as an error, and check the key options.

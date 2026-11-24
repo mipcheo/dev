@@ -14,7 +14,6 @@
     "@eslint/js": "catalog:",
     "@next/eslint-plugin-next": "catalog:",
     "@stylistic/eslint-plugin": "catalog:",
-    "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-import-resolver-typescript": "catalog:",
     "eslint-plugin-import-x": "catalog:",
@@ -35,6 +34,10 @@
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "catalog:",
+    "eslint": "catalog:",
     "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "eslint": "catalog:peers"
   }
 }
