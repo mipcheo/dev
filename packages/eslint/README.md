@@ -1,6 +1,6 @@
 # @mipcheo/eslint
 
-Shared ESLint configs. Pick the ones your project needs.
+Shared ESLint flat configs for TypeScript, React and Next.js. Built for MipCheo projects, and open to anyone. Pick the ones your project needs.
 
 ## Installation
 
@@ -155,3 +155,7 @@ Only aliases like `"name/*": ["folder/*"]` count. A `../` that no alias covers i
 pnpm test
 pnpm check
 ```
+
+## License
+
+[MIT](LICENSE)

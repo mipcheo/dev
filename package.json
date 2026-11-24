@@ -1,14 +1,17 @@
 {
   "name": "@mipcheo/dev",
   "type": "module",
+  "description": "Opinionated, standards-based ESLint, Prettier and TypeScript configs, built for MipCheo and free for anyone to use",
   "private": true,
+  "license": "MIT",
+  "author": "Thuan Dao",
   "packageManager": "pnpm@12.23.0",
   "scripts": {
-    "format": "prettier --write .",
     "check": "prettier --check . && pnpm --recursive --if-present run check",
-    "test": "pnpm --recursive --if-present run test",
+    "format": "prettier --write .",
     "pack": "pnpm --recursive pack --pack-destination out",
-    "publish": "pnpm --recursive publish"
+    "publish": "pnpm --recursive publish",
+    "test": "pnpm --recursive --if-present run test"
   },
   "devDependencies": {
     "@mipcheo/eslint": "workspace:*",
@@ -19,5 +22,13 @@
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mipcheo/dev.git"
+  },
+  "homepage": "https://github.com/mipcheo/dev#readme",
+  "bugs": {
+    "url": "https://github.com/mipcheo/dev/issues"
   }
 }

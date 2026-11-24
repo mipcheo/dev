@@ -1,6 +1,6 @@
 # @mipcheo/prettier
 
-Shared Prettier configs.
+Shared Prettier configs, with JSDoc, Markdown and Tailwind CSS support. Built for MipCheo projects, and open to anyone.
 
 ## Installation
 
@@ -98,3 +98,7 @@ It sets:
 pnpm test
 pnpm check
 ```
+
+## License
+
+[MIT](LICENSE)

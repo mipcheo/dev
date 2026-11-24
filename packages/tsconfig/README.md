@@ -1,6 +1,6 @@
 # @mipcheo/tsconfig
 
-Shared `tsconfig` files to extend.
+Shared strict `tsconfig` files to extend, for TypeScript, React, Next.js and NestJS. Built for MipCheo projects, and open to anyone.
 
 ## Installation
 
@@ -164,3 +164,7 @@ Everything in `react.json`, plus:
 ```sh
 pnpm test
 ```
+
+## License
+
+[MIT](LICENSE)

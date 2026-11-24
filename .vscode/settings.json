@@ -416,7 +416,13 @@
     "dependencies",
     "devDependencies",
     "peerDependencies",
-    "optionalDependencies"
+    "optionalDependencies",
+    "repository",
+    "homepage",
+    "bugs",
+    "publishConfig",
+    "files",
+    "keywords"
   ],
   "sort-json.settings.sortMode": "Objects Only",
   "tailwindCSS.classAttributes": [

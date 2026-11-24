@@ -2,13 +2,16 @@
   "name": "@mipcheo/prettier",
   "version": "1.0.0",
   "type": "module",
+  "description": "Opinionated, standards-based Prettier configs with JSDoc, Markdown and Tailwind CSS support",
+  "license": "MIT",
+  "author": "Thuan Dao",
   "exports": {
     ".": "./src/index.js",
     "./*": "./src/configs/*.js"
   },
   "scripts": {
-    "test": "vitest run",
-    "check": "tsc --noEmit && eslint . --max-warnings 0"
+    "check": "tsc --noEmit && eslint . --max-warnings 0",
+    "test": "vitest run"
   },
   "dependencies": {
     "prettier-plugin-jsdoc": "catalog:",
@@ -22,5 +25,27 @@
   },
   "peerDependencies": {
     "prettier": "catalog:peers"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/prettier",
+    "url": "git+https://github.com/mipcheo/dev.git"
+  },
+  "homepage": "https://github.com/mipcheo/dev/tree/main/packages/prettier#readme",
+  "bugs": {
+    "url": "https://github.com/mipcheo/dev/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "jsdoc",
+    "markdown",
+    "tailwindcss"
+  ]
 }

@@ -2,6 +2,9 @@
   "name": "@mipcheo/tsconfig",
   "version": "1.0.0",
   "type": "module",
+  "description": "Strict, standards-based tsconfig bases for TypeScript, React, Next.js and NestJS",
+  "license": "MIT",
+  "author": "Thuan Dao",
   "exports": {
     "./*.json": "./src/*.json"
   },
@@ -15,5 +18,27 @@
   },
   "peerDependencies": {
     "typescript": "catalog:peers"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/tsconfig",
+    "url": "git+https://github.com/mipcheo/dev.git"
+  },
+  "homepage": "https://github.com/mipcheo/dev/tree/main/packages/tsconfig#readme",
+  "bugs": {
+    "url": "https://github.com/mipcheo/dev/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "react",
+    "nextjs",
+    "nestjs"
+  ]
 }

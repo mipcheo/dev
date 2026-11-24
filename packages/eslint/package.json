@@ -2,13 +2,16 @@
   "name": "@mipcheo/eslint",
   "version": "1.0.0",
   "type": "module",
+  "description": "Opinionated, standards-based ESLint flat configs for TypeScript, React and Next.js",
+  "license": "MIT",
+  "author": "Thuan Dao",
   "exports": {
     ".": "./src/index.js",
     "./*": "./src/configs/*.js"
   },
   "scripts": {
-    "test": "vitest run",
-    "check": "tsc --noEmit && eslint . --max-warnings 0"
+    "check": "tsc --noEmit && eslint . --max-warnings 0",
+    "test": "vitest run"
   },
   "dependencies": {
     "@eslint/js": "catalog:",
@@ -39,5 +42,29 @@
   },
   "peerDependencies": {
     "eslint": "catalog:peers"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/eslint",
+    "url": "git+https://github.com/mipcheo/dev.git"
+  },
+  "homepage": "https://github.com/mipcheo/dev/tree/main/packages/eslint#readme",
+  "bugs": {
+    "url": "https://github.com/mipcheo/dev/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslint-config",
+    "flat-config",
+    "typescript",
+    "react",
+    "nextjs"
+  ]
 }

@@ -1,6 +1,6 @@
 # @mipcheo/dev
 
-Shared ESLint, Prettier and TypeScript configs for MipCheo projects.
+Shared ESLint, Prettier and TypeScript configs. Built for MipCheo projects, and open to anyone who wants strict, standards-based defaults.
 
 | Package | Configs |
 | --- | --- |
@@ -31,3 +31,7 @@ All versions are in [`pnpm-workspace.yaml`](pnpm-workspace.yaml):
 - `catalog`: exact versions, used as `"catalog:"`.
 - `catalogs.peers`: the ranges a package asks the installing project for (`eslint`, `prettier`, `typescript`), used as `"catalog:peers"`.
 - `overrides`: apply to this repository only; they are not published.
+
+## License
+
+[MIT](LICENSE)
